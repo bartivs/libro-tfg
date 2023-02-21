@@ -1,0 +1,59 @@
+\appendixpageoff
+\begin{appendices}
+%Agregar los apéndices
+
+\chapter*{Anexo A: Comandos de Rasa}
+\addcontentsline{loa}{appendix}{Anexo A: Comandos de Rasa}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l}
+\cline{1-2}
+\multicolumn{1}{|c|}{\textbf{Comando}} & \multicolumn{1}{c|}{\textbf{Efecto}}                                                                                                    &  \\ \cline{1-2}
+\multirow{2}{*}{rasa init}             & \multirow{2}{*}{Crea un nuevo proyecto con un ejemplo de entrenamiento, acciones y archivos de configuracion.}                          &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa train}            & \multirow{2}{*}{Entrena un modelo utilizando datos NLU y lo guarda en ./models.}                                                        &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa interactive}      & \multirow{2}{*}{Empieza una sesion interactiva de aprendizaje para crear un dataset nuevo de entrenamiento, chateando con el asistente} &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa shell}            & \multirow{2}{*}{Carga el modelo entrenado y permite conversar con tu asistente en la linea de comando}                                   &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa run}              & \multirow{2}{*}{Inicia un servidor con el modelo entrenado}                                                                             &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa run actions}      & \multirow{2}{*}{Inicia un servidor de acciones utiliando el SDK de Rasa}                                                                &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa visualize}        & \multirow{2}{*}{Genera una representación visual de las historias}                                                                      &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasas test}            & \multirow{2}{*}{Prueba un modelo entrenado de Rasa en cualquier archivo que empiea con test\_.}                                         &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasas data split nlu}  & \multirow{2}{*}{Realiza una separacion 80/20 de los datos de entrernamiento}                                                            &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa data convert}     & \multirow{2}{*}{Convierte los datos de entrenamiento entre diferentes formatos}                                                         &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa data migrate}     & \multirow{2}{*}{Migra del dominio 2.0 al formato 3.0}                                                                                   &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa data validate}    & \multirow{2}{*}{Controla que los datos del  dominio, de la NLU y de la conversación no sean incoherentes}                               &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa export}           & \multirow{2}{*}{Exporta conversaciones de un almacén de seguimiento a un corredor de eventos.}                                          &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa valuates markers} & \multirow{2}{*}{Extrae los marcadores de un almacén de seguimiento existente.}                                                          &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa x}                & \multirow{2}{*}{Inicia Rasa X en modo local}                                                                                            &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\multirow{2}{*}{rasa -h}               & \multirow{2}{*}{Muestra los comandos disponibles}                                                                                       &  \\
+                                       &                                                                                                                                         &  \\ \cline{1-2}
+\end{tabular}%
+}
+\end{table}
+
+
+\chapter*{Anexo B: El uso de plantillas}
+\addcontentsline{loa}{appendix}{Anexo B: El uso de plantillas}
+
+Aquí el contenido del anexo B
+
+
+
+\end{appendices}
