@@ -43,6 +43,7 @@ Y por último se instala Rasa Open Source utilizando pip (requiere Python 3.7 o 
     \includegraphics[width=\textwidth]{imagenes/cap3/4_Estructura del Proyecto.png}
     \caption{Estrucutra de los archivos}
     \label{fig:Estructura}
+    \cite{Rasa}
 \end{figure}
 \subsection{Archivo nlu}
 En él se encuentran datos estructurados que sirven para entrenar el modelo y luego extraer la información de los mensajes del usuario. Estos datos son  las intenciones y entidades, también se pueden agregar expresiones regulares y algunas tablas de búsqueda. \cite{NLU_Documentation}
@@ -79,6 +80,7 @@ entorno o proveídos por otras librerías de terceros para extender funcionalida
     \includegraphics[width=\textwidth]{imagenes/cap3/rasa_components.png}   
     \caption{Componentes de un esquema NLU}
     \label{fig:Componentes-MLU}
+    \cite{Rasa}
 \end{figure}
 
 \subsection{Tokenizadores}
@@ -92,6 +94,7 @@ Para el Inglés y el Español usualmente se usa WhiteSpaceTokenizer que separa e
     \includegraphics[width=\textwidth]{imagenes/cap3/tokenization.png}   
     \caption{Tokenización}
     \label{fig:tokenization-MLU}
+    \cite{Rasa}
 \end{figure}
 
 \subsection{Caracterizadores}
@@ -124,6 +127,7 @@ RegexFeaturizer            & Tokenization            & Sparse featurizer        
     \includegraphics[width=\textwidth]{imagenes/cap3/featurizers.png}   
     \caption{Caracterización}
     \label{fig:feazturization-MLU}
+    \cite{Rasa}
 \end{figure}
 
 \subsection{Clasificadores de Intención(Intent Classiffiers)}
@@ -155,6 +159,7 @@ FallbackClassifier           & Intents                 & \begin{tabular}[c]{@{}l
     \includegraphics[width=\textwidth]{imagenes/cap3/intent_classiffier.png}   
     \caption{Clasificación de intenciones y entidades}
     \label{fig:intentclasification-MLU}
+    \cite{Rasa}
 \end{figure}
 
 
@@ -187,6 +192,7 @@ RegexEntityExtractor    & Ninguno             & Tablas de búsqueda             
     \includegraphics[width=\textwidth]{imagenes/cap3/regex_extractor.png}   
     \caption{Extractor Regex}
     \label{fig:regex-extractor}
+    \cite{Rasa}
 \end{figure}
 
 \subsection{Selectores}
@@ -200,6 +206,7 @@ Utiliza la misma arquitectura y optimización que el DIETClassifier.
     \includegraphics[width=\textwidth]{imagenes/cap3/predicciones.png}   
     \caption{Predicción de acciones.}
     \label{fig:regex-extractor}
+    \cite{Rasa}
 \end{figure}
 
 Con el flujo NLU, se detectan las entidades e intenciones. Pero este flujo no predice la siguiente acción en la 
@@ -255,6 +262,7 @@ tener pruebas de usuarios reales lo mas rápido posible y poder agregar estos ca
     \includegraphics[width=\textwidth]{imagenes/cap3/architecture_deploy.png}   
     \caption{Arquitectura}
     \label{fig:deploy-architecture}
+    \cite{Rasa}
 \end{figure}
 
 \subsubsection{Servicios}
