@@ -1,14 +1,14 @@
 \chapter[IMPLEMENTACION]{IMPLEMENTACIÓN}
-En los capitulos anteriores pesentamos impletentaciones de alto nivel de la arquitectura de un sistema un 
-conceptual de un sistema de chatbot, asi como tambien arquitecturas recomendadas por la documentación de Rasa. En el presente capitulo presentaremos los componenetes elegidos y sus funciones en el sistema.
+En los capítulos anteriores presentamos implementaciones de alto nivel de la arquitectura de un sistema, un 
+conceptual de un sistema de chatbot, así como también arquitecturas recomendadas por la documentación de Rasa. En el presente capítulo presentaremos los componentes elegidos y sus funciones en el sistema.
   
 \section{Docker}
 
-Para construir los servicios se usaron microcontenedores Docker, por lo que intruduciremos brevemente los conceptos de esta tegnologia. 
+Para construir los servicios se usaron microcontenedores Docker, por lo que introduciremos brevemente los conceptos de esta tecnología. 
 
 \subsection{Contenedor}
 
-Los contenedores son la unidad mas pequeña de un servicio, es una entidad que se utiliza para aislar cada componente del sistema base. Cada contenedor puede aislarse mediante funciones del sistema operativo llamadas cgroups y cnames logrando asi aplicaciones en entornos aislados (sandboxed en Ingles). \cite{Docker}   
+Los contenedores son la unidad más pequeña de un servicio, es una entidad que se utiliza para aislar cada componente del sistema base. Cada contenedor puede aislarse mediante funciones del sistema operativo llamadas cgroups y cnames logrando así aplicaciones en entornos aislados (sandbox en Ingles). \cite{Docker}   
 
 \begin{figure}[ht]
     \centering
@@ -20,14 +20,14 @@ Los contenedores son la unidad mas pequeña de un servicio, es una entidad que s
 
 \subsection{Imagen de contenedor}
 
-Una imagen de contenedor es el sistema de arhivos aislados de todos los archivos necesarios para ejecutar la aplicacion asi como dependecias, configuraciones, executables, etc. Asi como tambien variables de entorno y datos necesarios para ejecutar la aplicación. \cite{Docker}  
+Una imagen de contenedor es el sistema de archivos aislados de todos los archivos necesarios para ejecutar la aplicación, así como dependencias, configuraciones, ejecutables, etc. Así como también variables de entorno y datos necesarios para ejecutar la aplicación. \cite{Docker}  
 
 \subsection{Redes}
 
-Entre las ventajas de desplegar una aplicación por medio de contenedores docker es que se pueden comunicar entre ellos y tambien con sevicios externos al entorno de Docker. Por defecto se pueden crear varios tipos de configuraciones de red, pero por lo general se utilizan redes puente entre los contenedores para que estos puedan comunicarse mutuamente entre ellos y solo exponienco los puertos necesarios para interacuar con el sistema en cuestion y esta es la opción utilizada en nuestra implementaón. \cite{Docker}  
+Entre las ventajas de desplegar una aplicación por medio de contenedores Docker es que se pueden comunicar entre ellos y también con servicios externos al entorno de Docker. Por defecto se pueden crear varios tipos de configuraciones de red, pero por lo general se utilizan redes puente entre los contenedores para que estos puedan comunicarse mutuamente entre ellos y solo exponiendo los puertos necesarios para interactuar con el sistema en cuestión y esta es la opción utilizada en nuestra implementación. \cite{Docker}  
 
 \subsection{Volumenes}
-Puesto que un contenedor no tiene un estado percistente sobre los datos que genera se introducen los volumenes son la forma recomedada de agregar presistencia de datos a un contendedor de Docker. 
+Puesto que un contenedor no tiene un estado persistente sobre los datos que genera, se introducen los volúmenes, son la forma recomendada de agregar persistencia de datos a un contendedor de Docker. 
 \cite{Docker} 
 
 \begin{figure}[ht]
@@ -38,18 +38,18 @@ Puesto que un contenedor no tiene un estado percistente sobre los datos que gene
 \end{figure}
 
 \subsection{Construción}
-Las imagenes de docker se consytruyen apartir de instrucciones escritas en un achivo denominadado Dockerfile, 
-generalmente de parte de una imagen base de la cual se le adicciona lo necesario para ejecutar la aplicación.
+Las imágenes de Docker se construyen partir de instrucciones escritas en un archivo denominadado Dockerfile, 
+generalmente de parte de una imagen base de la cual sé la adiciona lo necesario para ejecutar la aplicación.
 \cite{Docker}
 
 
 \subsection{Repositorios}
-Un respotorio de imagenes Docker(Docker Registry) es un servidor que almacena y distribuye imagenes versionadas deneradas apartir de un Dockerfile. Estos repositorios pueden ser publicos como DockerHub que es el oficcial de la comunidad de Docker como asi tambien privado para un equipo de desarrollo en una institucion.
+Un repositorio de imágenes Docker(Docker Registry) es un servidor que almacena y distribuye imágenes versionadas generadas partir de un Dockerfile. Estos repositorios pueden ser públicos como DockerHub que es el oficial de la comunidad de Docker como así también privado para un equipo de desarrollo en una institución.
 \cite{Docker}
 
 \section{Componentes}
 
-Cada componente del sistema se configuro en un contenedor de Docker con la exepcion del servidor NGINX que si estaba instalado sobre el sistema operativo del servidor. 
+Cada componente del sistema se configuró en un contenedor de Docker con la excepción del servidor NGINX que si estaba instalado sobre el sistema operativo del servidor. 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\textwidth]{imagenes/cap4/server.png}
@@ -60,27 +60,27 @@ Cada componente del sistema se configuro en un contenedor de Docker con la exepc
 
 \subsection{Rasa Open Source}
 
-El contendedor de Rasa Open Source ejecuta una imagen oficial proveida por Rasa disponible en los repositorios de DockerHub\cite{DockerHub}, pero con el modelo entrenado y las configureaciones particulares al proyecto. Es el unico conteneor que tiene un puerto externo para servir a los usuario. Tambien hace uso de los servicios de PosgresSQL y de el servicio de acciones(action server). 
+El contendedor de Rasa Open Source ejecuta una imagen oficial proveída por Rasa disponible en los repositorios de DockerHub\cite{DockerHub}, pero con el modelo entrenado y las configuraciones particulares al proyecto. Es el único contenedor que tiene un puerto externo para servir al usuario. También hace uso de los servicios de PosgresSQL y del servicio de acciones(action server). 
 
 
 \subsection{Servidor de acciones}
 
-Servidor de acciones(acction server) es un servicio interno que ejecuta codigo escrito en python este utiliza una imagen oficial para servicios Python disponible en los repsoitorios de DockerHub\cite{DockerHub}, estos son operaciones especificas para algunas acciones una respuesta no estatica, como por el ejemplo la accion relacionada a el calculo de puntajes en el final deacuardo a los puntajes en los examenes parciales.
+Servidor de acciones(acction server) es un servicio interno que ejecuta código escrito en Python este utiliza una imagen oficial para servicios Python disponible en los repositorios de DockerHub\cite{DockerHub}, estos son operaciones específicas para algunas acciones una respuesta no estática, como por el ejemplo la acción relacionada con el cálculo de puntajes en el final desacuerdo a los puntajes en los exámenes parciales.
 
  \subsection{PostgresSQL}
   
- PostgresSQL es un motor de base de datos del tipo relacional\cite{postgresql} el cual se configuro apartir de una imagen official de PostgresSQL disponible en los repositorios de DockerHub\cite{DockerHub}. Aparte de sus funciones de base de datos de sistema tambien ejecutra un trabajo periodico(cada una hora) para realizar una copia acualizada de los contenidos de la tabla Eventos a un archivo separado por comas(csv) que se utiliza para realimentar las conversaciones y generar mas datos para mejorar el modelo. 
+ PostgresSQL es un motor de base de datos del tipo relacional\cite{postgresql} el cual se configuró a partir de una imagen oficial de PostgresSQL disponible en los repositorios de DockerHub\cite{DockerHub}. Aparte de sus funciones de base de datos de sistema, también ejecutar un trabajo periódico(cada una hora) para realizar una copia actualizada de los contenidos de la tabla Eventos a un archivo separado por comas(csv) que se utiliza para retroalimentar las conversaciones y generar más datos para mejorar el modelo. 
 
  \subsection{NGINX}
 
- NGINX, es una servidor web que tambien puede ser usado como proxy reverso, que implica redirigir el trafico a puertos internos y también para servir archivos que fueron las funciones ulizadas para el proyecto. Asi como tambien puede ser utilizado como balanceador de carga, mail proxy y HTTP cache entre otras funciones \cite{NGINX}
-El servidor NGINX redige el trafico a la instancia de Rasa Open Source y si como tambien sirve el archivo de 
-la copia mas reciente de la tabla Eventos para agilizar las verificaciones de las respuestas y preguntas recibidas.
+ NGINX, es un servidor web que también puede ser usado como proxy reverso, que implica redirigir el tráfico a puertos internos y también para servir archivos que fueron las funciones utilizadas para el proyecto. Así como también puede ser utilizado como balanceador de carga, mail proxy y HTTP cache, entre otras funciones \cite{NGINX}
+El servidor NGINX redirige el tráfico a la instancia de Rasa Open Source y si como también sirve el archivo de 
+la copia más reciente de la tabla Eventos para agilizar las verificaciones de las respuestas y preguntas recibidas.
 
 \section{Recursos}
 
-Para la puesta en producción de el proyecto, se utilizo una instancia de Droplet alojado en Nueva York del proveedor DigitalOcean con un procesador con un 1vcpu(procesaror virtualizado), 1 GB de ram, 25 GB de alacenamiento y con un costo de entre 4 y 6 dolares americanos al mes dependiendo de el trafico presentado. Por las limitaciones de memoria del servirdor se configuro tambien 4 GB de espacio de intercambio(SWAP) en el espacio de alacenamiento.  
+Para la puesta en producción del proyecto, se utilizó una instancia de Droplet alojado en Nueva York del proveedor DigitalOcean con un procesador con un 1vcpu(procesador virtualizado), 1 GB de RAM, 25 GB de almacenamiento y con un costo de entre 4 y 6 dólares americanos al mes dependiendo del tráfico presentado. Por las limitaciones de memoria del servidor se configuró también 4 GB de espacio de intercambio(SWAP) en el espacio de almacenamiento.  
 
 \section{Telegram}
 
-Para habilitar pruebas para el publico general se eligio Telegram, puesto que es bastante sencillo usar su servicio para connectar a implementaciones de chatbot y este no tiene costo por el uso. \cite{botfather}
+Para habilitar pruebas para el público general se eligió Telegram, puesto que es bastante sencillo usar su servicio para conectar a implementaciones de chatbots y este no tiene costo de uso. \cite{botfather}
