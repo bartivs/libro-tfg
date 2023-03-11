@@ -1,0 +1,64 @@
+\chapter[ANALISIS]{ANALISIS DE RESULTADOS}
+
+En este capítulo se presentan los resultados obtenidos en la implementación del chatbot utilizando
+la plataforma Rasa OpenSource para responder preguntas frecuentes de estudiantes de la Facultad de
+Ingeniería.  Además, se analizan los datos recopilados durante el entrenamiento del modelo, se
+discuten las limitaciones, evaluara la efectividad del chatbot, asi como tambien posibles mejoras
+en la implementación del chatbot.
+
+\section{Configuraciones ulilizadas}
+Dado el interés en que los resultados obtenidos sean replicables, en primer lugar, se explicarán
+los componentes seleccionados para el entrenamiento y despliegue del modelo.
+\begin{itemize}
+	\item \textbf{WhitespaceTokenizer}: componente que divide el texto en palabras
+	      individuales, utilizando espacios en blanco como delimitador.
+	      \cite{Configuration_Documentation}
+	\item \textbf{RegexFeaturizer}: componente que crea características basadas en expresiones
+	      regulares. Esto puede ser útil para detectar patrones en el texto.
+	      \cite{Configuration_Documentation}
+	\item \textbf{LexicalSyntacticFeaturizer}: componente que combina características léxicas y
+	      sintácticas para crear una mejor representación del texto. Utiliza etiquetas de
+	      partes del discurso
+	      y etiquetas de análisis de dependencia para crear características.
+	      \cite{Configuration_Documentation}
+	\item \textbf{CountVectorsFeaturizer}: componente que crea una representación dispersa de
+	      bolsa de
+	      palabras del texto. Puede ser utilizado para crear características para la
+	      clasificación de
+	      intenciones o la extracción de entidades. \cite{Configuration_Documentation}
+	\item \textbf{DIETClassifier}: componente que combina una red neuronal recurrente con un
+	      transformador para realizar la clasificación de intenciones y el reconocimiento de
+	      entidades.
+	      Utiliza múltiples fuentes de información, como incrustaciones de palabras,
+	      incrustaciones de
+	      caracteres y etiquetas de partes del discurso. \cite{Configuration_Documentation}
+	\item \textbf{EntitySynonymMapper}: componente que mapea las entidades a su forma canónica.
+	      Esto
+	      puede ser útil para manejar variaciones en la forma en que se expresan las entidades
+	      en el texto. \cite{Configuration_Documentation}
+	\item \textbf{ResponseSelector}: componente que selecciona una respuesta basada en la
+	      entrada del
+	      usuario. Utiliza un enfoque basado en recuperación, donde coincide la entrada del
+	      usuario con un
+	      conjunto de respuestas predefinidas. Puede ser útil para manejar preguntas frecuentes
+	      o
+	      conversaciones informales.\cite{Configuration_Documentation}
+	\item \textbf{FallbackClassifier}: componente que clasifica los mensajes como fallback si
+	      no
+	      coinciden con ninguna de las intenciones en el modelo. Puede ser útil para manejar
+	      mensajes fuera
+	      de contexto o solicitudes que el modelo no está entrenado para
+	      manejar.\cite{Configuration_Documentation}
+\end{itemize}
+
+\section{Posibles Mejoras}
+
+\begin{itemize}
+	\item Integrar a sistemas existentes de la Facultad de Ingeniería.
+	\item Autenticar usuarios a los sistemas de la Facultad de Ingeniería para obtener datos
+	      especificos.
+	\item Implementacion de interfaz propia o utilizacion de elementos interactivos como bottones
+	      para respuestas rapidas.
+	\item Se puede agregar respuestas de la chatbots publicos como  ChatGPT para preguntas fuera del
+	      contexto de la Facultad de Ingeniería.
+\end{itemize}
