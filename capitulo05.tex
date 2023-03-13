@@ -11,7 +11,7 @@ los componentes seleccionados para el entrenamiento y despliegue del modelo.
 \begin{itemize}
 	\item \textbf{WhitespaceTokenizer}: componente que divide el texto en palabras
 	      individuales, utilizando espacios en blanco como delimitador.
-	      \cite{Configuration_Documentation}
+	      \cite{Configuation_Documentation}
 	\item \textbf{RegexFeaturizer}: componente que crea características basadas en expresiones
 	      regulares. Esto puede ser útil para detectar patrones en el texto.
 	      \cite{Configuration_Documentation}
@@ -50,86 +50,139 @@ los componentes seleccionados para el entrenamiento y despliegue del modelo.
 	      manejar.\cite{Configuration_Documentation}
 \end{itemize}
 \section{Conjunto de Datos propio}
-Inicialmente, se creó un conjunto de datos con las posibles preguntas frecuentes de los alumnos, una vez que el Bot estuvo en funcionamiento e integrado a Telegram se recolectaron las preguntas que realmente tienen los estudiantes de la FIUNA, estas fueron guardadas en una base de datos como eventos, teniendo mucha información innecesaria para el conjunto de datos. Para un mejor manejo y limpieza de los datos se utilizó Python con ayuda de la librería Pandas. Posteriormente se guardó el dataframe creado en un archivo de Excel donde se analizaron y clasificaron un total de 1051 entradas en 141 intenciones distintas, De entre ellas, se identificaron las 15 intenciones más recurrentes.
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/cap5/Top15intents.jpeg}   
-    \caption{Top 15 Intenciones}
-    \label{fig:Top15intents}
+
+Inicialmente, se creó un conjunto de datos con las posibles preguntas frecuentes de los alumnos,
+una vez que el Bot estuvo en funcionamiento e integrado a Telegram se recolectaron las preguntas
+que realmente tienen los estudiantes de la FIUNA, estas fueron guardadas en una base de datos como
+eventos, teniendo mucha información innecesaria para el conjunto de datos. Para un mejor manejo y
+limpieza de los datos se utilizó Python con ayuda de la librería Pandas. Posteriormente se guardó
+el dataframe creado en un archivo de Excel donde se analizaron y clasificaron un total de 1051
+entradas en 141 intenciones distintas, De entre ellas, se identificaron las 15 intenciones más
+recurrentes.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{imagenes/cap5/Top15intents.jpeg}
+	\caption{Top 15 Intenciones}
+	\label{fig:Top15intents}
 \end{figure}
 
 \section{Validación de los datos e Historias}
-Rasa cuenta con varias funciones para probar los diálogos, historias, gestor de diálogos y el procesamiento de mensajes, de tal forma a encontrar errores o inconsistencias antes de realizar el entrenamiento.
+Rasa cuenta con varias funciones para probar los diálogos, historias, gestor de diálogos y el
+procesamiento de mensajes, de tal forma a encontrar errores o inconsistencias antes de realizar el
+entrenamiento.
+
 \subsection{Validación de datos}
-El siguiente comando se encarga de verificar que no haya errores e inconsistencias en los datos y configuraciones.
+El siguiente comando se encarga de verificar que no haya errores e inconsistencias en los datos y
+configuraciones.
+
 \begin{center}
-    \framebox[10cm][c]{rasa data validate}  
+	\framebox[10cm][c]{rasa data validate}
 \end{center}
-Es recomendable ejecutarlo antes de entrenar el modelo, ya que si se encuentra algún problema, el entrenamiento también podría fallar.
+
+Es recomendable ejecutarlo antes de entrenar el modelo, ya que si se encuentra algún problema, el
+entrenamiento también podría fallar.
+
 \subsection{Evaluación del desempeño de la NLU}
-Una practica usual al ejecutar aprendizaje automático es dividir aleatoriamente el conjunto de datos en uno de entrenamiento y otro de pruebas. El bot utiliza el primer conjunto para aprender las características necesarias para realizar las predicciones adecuadas, y el segundo conjunto para evaluar el modelo mediante datos que aún no hayan sido vistos antes.\\
+Una practica usual al ejecutar aprendizaje automático es dividir aleatoriamente el conjunto de
+datos en uno de entrenamiento y otro de pruebas. El bot utiliza el primer conjunto para aprender
+las características necesarias para realizar las predicciones adecuadas, y el segundo conjunto para
+evaluar el modelo mediante datos que aún no hayan sido vistos antes.\\
 Rasa nos permite dividir los datos mediante el comando:
+
 \begin{center}
-    \framebox[10cm][c]{rasa data split nlu}  
+	\framebox[10cm][c]{rasa data split nlu}
 \end{center}
-Por defecto, Rasa separa los datos de entrenamiento/prueba en un 80/20, luego, para probar que tan bien entrenado se encuentra el modelo utilizamos 'rasa test nlu' especificando cuales son los datos de entrenamiento y prueba de la siguiente forma:\\
+
+Por defecto, Rasa separa los datos de entrenamiento/prueba en un 80/20, luego, para probar que tan
+bien entrenado se encuentra el modelo utilizamos 'rasa test nlu' especificando cuales son los datos
+de entrenamiento y prueba de la siguiente forma:\\
+
 \begin{center}
-    \framebox[10cm][c]{    --nlu train\_test\_split/test\_data.yml}  
+	\framebox[10cm][c]{    --nlu train\_test\_split/test\_data.yml}
 \end{center}
-Rasa test proporciona herramientas que facilitan la detección y corrección de errores, incluye una matriz de confusión, un archivo .json de reporte, un histograma de confianza y un archivo .json de errores en caso de que existan.\\
-La matriz de confusión es una herramienta fundamental que permite evaluar el rendimiento de un modelo, permite identificar los falsos positivos y falsos negativos, nos muestra en su eje vertical las etiquetas reales y en el eje horizontal las etiquetas predecidas, permitiendo identificar si existen errores de clasificación.\\
-Además, el script de rasa test guarda estos errores de clasificación en un archivo .json lo que facilita el depurado y corrección de errores para mejorar la calidad de la clasificación.\\
-El Histograma nos permite visualizar las predicciones del modelo y la confianza que ha sido otorgada a cada intención o entidad.\\
-Las predicciones correctas se encuentran en la parte izquierda del gráfico y son representadas en color azul, mientras que las incorrectas se encuentran a la derecha y son de color rojo.\\
-La ubicación de cada predicción en el eje horizontal del histograma representa el número de muestras, y en el eje vertical la confianza con la que el modelo ha realizado su predicción.\cite{Interpretación_graficos}
+
+Rasa test proporciona herramientas que facilitan la detección y corrección de errores, incluye una
+matriz de confusión, un archivo .json de reporte, un histograma de confianza y un archivo .json de
+errores en caso de que existan.\\
+La matriz de confusión es una herramienta fundamental que permite evaluar el rendimiento de un
+modelo, permite identificar los falsos positivos y falsos negativos, nos muestra en su eje vertical
+las etiquetas reales y en el eje horizontal las etiquetas predecidas, permitiendo identificar si
+existen errores de clasificación.\\
+Además, el script de rasa test guarda estos errores de clasificación en un archivo .json lo que
+facilita el depurado y corrección de errores para mejorar la calidad de la clasificación.\\
+El Histograma nos permite visualizar las predicciones del modelo y la confianza que ha sido
+otorgada a cada intención o entidad.\\
+Las predicciones correctas se encuentran en la parte izquierda del gráfico y son representadas en
+color azul, mientras que las incorrectas se encuentran a la derecha y son de color rojo.\\
+La ubicación de cada predicción en el eje horizontal del histograma representa el número de
+muestras, y en el eje vertical la confianza con la que el modelo ha realizado su
+predicción. \cite{interpretacion_graficos}
 
 \subsection{Clasificador de Intenciones}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/cap5/intent_confusion_matrix.png}   
-    \caption{Matriz de Confusión de Intenciones}
-    \label{fig:intent_matriz}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{imagenes/cap5/intent_confusion_matrix.png}
+	\caption{Matriz de Confusión de Intenciones}
+	\label{fig:intent_matriz}
 \end{figure}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/cap5/intent_histogram.png}   
-    \caption{Histograma de confianza en la clasificación de Intenciones}
-    \label{fig:intent_histograma}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{imagenes/cap5/intent_histogram.png}
+	\caption{Histograma de confianza en la clasificación de Intenciones}
+	\label{fig:intent_histograma}
 \end{figure}
-Al analizar la matriz de confusión \ref{fig:intent_matriz} y el histograma \ref{fig:intent_histograma} podemos verificar que todas las intenciones fueron clasificadas correctamente con una confianza superior a 0.98, indicando que el modelo es bastante efectivo en su tarea de clasificación.
+
+Al analizar la matriz de confusión \ref{fig:intent_matriz} y el histograma
+\ref{fig:intent_histograma} podemos verificar que todas las intenciones fueron clasificadas
+correctamente con una confianza superior a 0.98, indicando que el modelo es bastante efectivo en su
+tarea de clasificación.
 \subsection{Extracción de entidades}
-Al ver los gráficos del extractor, tanto en la matriz de confusión de entidades \ref{fig:entity_matriz} como en el histograma \ref{fig:entity_histograma} se encuentra que el modelo se confunde con dos entidades, revisando el reporte de errores se encuentra que los extractores DIETClassifier y EntitySynonymMapper reconocen las entidades por separado, esto genera el error pero no afecta al rendimiento del modelo o a la correcta selección de una respuesta.
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/cap5/DIETClassifier_confusion_matrix.png}
-    \caption{Matriz de Confusión del extractor de entidades}
-    \label{fig:entity_matriz}
+Al ver los gráficos del extractor, tanto en la matriz de confusión de entidades
+\ref{fig:entity_matriz} como en el histograma \ref{fig:entity_histograma} se encuentra que el
+modelo se confunde con dos entidades, revisando el reporte de errores se encuentra que los
+extractores DIETClassifier y EntitySynonymMapper reconocen las entidades por separado, esto genera
+el error pero no afecta al rendimiento del modelo o a la correcta selección de una respuesta.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{imagenes/cap5/DIETClassifier_confusion_matrix.png}
+	\caption{Matriz de Confusión del extractor de entidades}
+	\label{fig:entity_matriz}
 \end{figure}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/cap5/DIETClassifier_histogram.png}
-    \caption{Histograma de confianza del extractor de entidades}
-    \label{fig:entity_histograma}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{imagenes/cap5/DIETClassifier_histogram.png}
+	\caption{Histograma de confianza del extractor de entidades}
+	\label{fig:entity_histograma}
 \end{figure}
 
 \subsection{Selección de Respuestas}
-Podemos observar en el histograma \ref{fig:response_histograma} de la selección de respuestas que no se predijo erróneamente ninguna respuesta, la matriz de confusión en este caso no es de mucha utilidad ya que son bastantes respuestas y complica la visibilidad de las etiquetas, en caso de que existiese un error podremos encontrarlo en el reporte .json.
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{imagenes/cap5/response_selection_histogram.png}
-    \caption{Histograma de confianza del seleccionador de respuestas}
-    \label{fig:response_histograma}
+Podemos observar en el histograma \ref{fig:response_histograma} de la selección de respuestas que
+no se predijo erróneamente ninguna respuesta, la matriz de confusión en este caso no es de mucha
+utilidad ya que son bastantes respuestas y complica la visibilidad de las etiquetas, en caso de que
+existiese un error podremos encontrarlo en el reporte .json.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{imagenes/cap5/response_selection_histogram.png}
+	\caption{Histograma de confianza del seleccionador de respuestas}
+	\label{fig:response_histograma}
 \end{figure}
+
 \section{Posibles Mejoras}
 \begin{itemize}
 	\item Integrar a sistemas existentes de la Facultad de Ingeniería.
 	\item Autenticar usuarios a los sistemas de la Facultad de Ingeniería para obtener datos
 	      específicos.
-	\item Implementación de interfaz propia o utilización de elementos interactivos como botones
+	\item Implementación de interfaz propia o utilización de elementos interactivos como
+	      botones
 	      para respuestas rápidas.
-	\item Se puede agregar respuestas de la chatbots públicos como  ChatGPT para preguntas fuera del
+	\item Se puede agregar respuestas de la chatbots públicos como	ChatGPT \cite{api_chatgpt}
+	      para preguntas
+	      fuera del
 	      contexto de la Facultad de Ingeniería.
 \end{itemize}
