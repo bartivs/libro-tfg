@@ -78,7 +78,7 @@ información de los mensajes del usuario. Estos datos son  las intenciones y ent
 pueden agregar expresiones regulares y algunas tablas de búsqueda. \cite{NLU_Documentation}
 
 \subsection{Archivo Rules}
-En este archivo se definen las reglas, que no son mas que  tipo de datos de entrenamiento
+En este archivo se definen las reglas, que no son más que un tipo de datos de entrenamiento
 encargados de describir partes de una conversación que siempre sigue el mismo
 camino.\cite{Rules_Documentation}
 
@@ -291,7 +291,7 @@ Utiliza la misma arquitectura y optimización que el DIETClassifier.
 	\centering
 	\includegraphics[width=\textwidth]{imagenes/cap3/predicciones.png}
 	\caption{Predicción de acciones.}
-	\label{fig:regex-extractor}
+	\label{fig:Predicción de acciones}
 	\cite{Rasa}
 \end{figure}
 
@@ -356,27 +356,6 @@ para ello Rasa tiene una opción llamada 'Fallback' que permite pedir al usuario
 pregunta para tratar nuevamente de predecir correctamente a que intención se refiere. \\
 Para su utilización se debe agregar el 'FallbackClassifier' en el pipeline, crear respuestas por
 defecto y actualizar las reglas.
-\section{Pruebas}
-Rasa cuenta con varias funciones para probar los diálogos, historias, el gestor de diálogos y el
-procesamiento de mensajes.
-\subsection{Validación de datos}
-El comando 'rasa data validate' se encarga de verificar que no haya errores e inconsistencias en
-los datos y configuraciones. Es recomendable ejecutar este comando antes de entrenar el modelo, ya
-que si se encuentra algún problema, el entrenamiento también podría fallar.
-\subsection{Evaluación del desempeño de la NLU}
-Una practica usual al ejecutar aprendizaje automático es dividir aleatoriamente el conjunto de
-datos en uno de entrenamiento y otro de pruebas. El bot utiliza el primer conjunto para aprender
-las características necesarias para realizar las predicciones adecuadas, y el segundo conjunto para
-evaluar el modelo mediante datos que aún no hayan sido vistos antes.\\
-Rasa nos permite dividir los datos mediante el comando 'rasa data split nlu' que por defecto separa
-los datos de entrenamiento/prueba en un 80/20, luego, para probar que tan bien entrenado se
-encuentra el modelo utilizamos 'rasa test nlu' especificando cuales son los datos de entrenamiento
-y prueba de la siguiente forma:\\
---nlu train\_test\_split/test\_data.yml
-
-Otro método muy completo para evaluar el modelo es mediante validación cruzada o cross validation.
-Este divide los datos en múltiples subconjuntos llamados 'folds' donde se van alternando los datos
-de entrenamiento y pruebas
 
 \section{Despliegue del sistema}
 Según la documentación de Rasa, el mejor momento para desplegar una versión de prueba es tan rápido
@@ -384,7 +363,6 @@ cuando
 se tenga un bot que cumpla los requisitos mínimos de los requisitos de diseño. De esta manera se
 puede
 tener pruebas de usuarios reales lo mas rápido posible y poder agregar estos casos.
-
 \subsection{Arquitectura}
 
 \begin{figure}[h]
@@ -394,9 +372,8 @@ tener pruebas de usuarios reales lo mas rápido posible y poder agregar estos ca
 	\label{fig:deploy-architecture}
 	\cite{Rasa}
 \end{figure}
-
 \subsubsection{Servicios}
-El diagrama muestra tres categorías de servicios: Los morados son componentes de principales de
+El diagrama muestra tres categorías de servicios:\\Los morados son componentes de principales de
 Rasa
 Enterprise, los azules son los servicios principales de Rasa Open Source y los anaranjados son
 servicios
@@ -418,19 +395,14 @@ servicios para
 ejecutar Rasa Enterprise estos deben ser todos de la misma versión para asegurar compatibilidad.
 
 \begin{itemize}
-	\item \textbf{Servicio de eventos(Event Service):} Consume datos del corredor de eventos(event
-
-	      broker) y los archiva en la base de datos.
+	\item \textbf{Servicio de eventos(Event Service):} Consume datos del corredor de eventos(event broker) y los archiva en la base de datos.
 	\item \textbf{Servicio de migración de la Base de datos(DB migration service):}  Asegura que
 	      los esquemas de la base de datos
 	      esten actualizados con respecto a la versión actual de Rasa Enterprise.
 	\item \textbf{Rasa-X:} Ejecuta las tareas del back-end y front-end. Archiva y recupera datos de
-
 	      conversaciones, entrenamiento y meta-datos, como rótulos de conversaciones y banderas de
-	      mensajes
-	      en la base de datos de Rasa Enterprise. El front-end usa las entradas del back-end para brindar
-	      una
-	      interfaz amigable para el usuario.
+	      mensajes en la base de datos de Rasa Enterprise. El front-end usa las entradas del back-end para brindar
+	      una interfaz amigable para el usuario.
 \end{itemize}
 
 \subsubsection{Servicios de Rasa Open Source}

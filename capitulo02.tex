@@ -18,7 +18,7 @@ herramientas para la traducción asistida.\cite{hancox}
 En 1950 Alan Turing desarrolla el test de Turing que es un test para distinguir el nivel de
 inteligencia de una maquina, propuso que un humano evaluara las conversaciones en un lenguaje
 natural entre un humano y una máquina diseñada para dar respuestas similares a los humanos. Lo que
-pudo definir la inteligencia de un sistema de computo de una forma comparable a la inteligencia
+pudo definir la inteligencia de un sistema de cómputo de una forma comparable a la inteligencia
 humana.
 En el año 1954 un experimentó de colaboración de la Georgetown University e IBM se  hace publica la
 primera demostración logra la traducción automática de mas de 60 se oraciones en Ruso al Ingles.
@@ -51,14 +51,14 @@ importante entender componentes del lenguaje.\cite{sowmya_practical_npl}
 	\centering
 	\includegraphics[width=\textwidth]{imagenes/Cap 2/lenguaje.drawio.png}
 	\caption{Aplicaciones de partes de un Lenguaje}
-	\label{fig:Arquitectura}
+	\label{fig:Aplicaciones de partes de un Lenguaje}
 	\cite{sowmya_practical_npl}
 \end{figure}
 
 %metodos heuristicos
 \subsection{Métodos Heurísticos y basado en reglas}
 
-Similarmente a otros métodos primitivos usando AI, los primeros intentos en el diseño de sistemas
+Similarmente a otros métodos primitivos usando IA, los primeros intentos en el diseño de sistemas
 de NLP fueron
 en construir reglas de acciones a manualmente por medio de arboles de decisión. Esto requiere que
 lo desarrolladores tengan
@@ -72,32 +72,30 @@ siglas en ingles). Una expresión regular es un conjunto de caracteres o patrón
 para coincidir y
 encontrar subcadenas en un texto como
 \verb|^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$|
-que es utilizado encontrar direcciones de email validas en un texto.\\
-Las reglas y heuristica juegan un rol importande en todo el ciclo de vida de proyectos de NLP
-incluso hoy en dia. En un
-por un lado, estos son una buena manera de desarrollar primeras versiones. O también pueden ser de
+que es utilizado para encontrar direcciones de email validas en un texto.\\
+Las reglas y métodos heurísticos juegan un rol importante en todo ciclo de vida de proyectos de NLP
+incluso hoy en día. Por un lado, estos son una buena manera de desarrollar primeras versiones. También pueden ser de
 suma importancia en
-sistemas basados en AI para llenar vacíos o limitaciones de los modelos probabilísticos.
+sistemas basados en IA para llenar vacíos y limitaciones de los modelos probabilísticos.
 \cite{sowmya_practical_npl}
 
 %Metodos basados en ML
 \subsection{Métodos basados en Aprendizaje Automático (Machine Learning)}
-El Aprendizaje Automático o ML(por sus siglas en ingles) son aplicados para datos de texto así como
-también son utilizados
-en otro tipos de datos, como imágenes, voz y datos estructurados. Métodos de aprendizaje
+El Aprendizaje Automático o ML(por sus siglas en inglés) son aplicados para datos de texto así como
+para otro tipos de datos, como imágenes, voz y datos estructurados. Métodos de aprendizaje
 supervisados como clasificación y
-regresión con usados con mucha frecuencia en NLP. Como por ejemplo para buenas aplicaciones son par
+regresión son usados con mucha frecuencia en NLP. Como por ejemplo para
 clasificar temas de
 artículos en el caso de calificadores.\\
 Por otro lado las técnicas de regresión suelen ser utilizadas para dar una predicción numérica,
 como por ejemplo el precio
-de un stock basado en discusiones en una red social.Similarmente métodos no supervisados pueden ser
+de un stock basado en discusiones en una red social. Similarmente métodos no supervisados pueden ser
 útiles para
 agrupar documentos similares.
 %deep learning
 \subsection{Aprendizaje Profundo}
 
-Aprendizaje profundo o Deep learning(DL) en ingles, es una evolución mas compleja de los algoritmos
+Aprendizaje profundo o Deep learning(DL) en inglés, es una evolución mas compleja de los algoritmos
 de ML convencionales,
 se trata de combinaciones de nodos que emulan el funcionamiento de las redes neuronales del
 cerebro, sin entrar en mucho detalle procederemos a analizar los métodos basados en DL mas
@@ -108,7 +106,7 @@ utilizados y exitosos actualmente en el área de NLP.
 En todos los lenguajes una oración tiene una dirección de lectura, por ejemplo en el Castellano se
 lee de izquierda a derecha. Entonces un modelo que puede ser útil para leer progresivamente una
 entrada de texto podría ser muy útil para NLP. Las Redes Neuronales recurrentes o RNNs por sus
-siglas del ingles están específicamente diseñadas para mantener
+siglas del inglés están específicamente diseñadas para mantener
 un procesamiento secuencial y memoria de los pasos anteriores. Esta memoria es temporal y la
 información es almacenada y
 actualizada en cada paso de lectura de la RNN.
@@ -116,14 +114,14 @@ actualizada en cada paso de lectura de la RNN.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{imagenes/Cap 2/rnn.png}
-	\caption{Aplicaciones de partes de un Lenguaje}
+	\caption{RNN}
 	\label{fig:RNN}
 	\cite{sowmya_practical_npl}
 \end{figure}
 
-Las RNNs son poderosa y funcionan muy bien para resolver muchas tareas de NLP, como clasificación
+Las RNNs son poderosas y funcionan muy bien para resolver muchas tareas de NLP, como clasificación
 de texto, reconocimiento
-de entidad, tradición automática, etc. También se pueden utilizar para generar texto, por ejemplo
+de entidad, traducción automática, etc. También se pueden utilizar para generar texto, por ejemplo
 para predecir la
 siguiente palabra de se va a escribir de acuerdo al contexto de lo que ya se escribió.
 
@@ -134,7 +132,7 @@ variaciones optimizadas para
 memoria de largo plazo(LSTMs).
 
 \subsection{Redes Neuronales Convencionales(CNN)}
-Las CNNs por sus siglas en Ingles o Redes Neuronales Convoluciones son muy populares y muy
+Las CNNs por sus siglas en Inglés o Redes Neuronales Convolucionales son muy populares y muy
 frecuentemente usadas para
 para aplicaciones como clasificación de imágenes, reconocimiento de vídeo, etc. Las CNNs también
 vieron éxito en NLP,
@@ -147,13 +145,13 @@ una imagen.
 	\centering
 	\includegraphics[width=0.8\textwidth]{imagenes/Cap 2/cnn.png}
 	\caption{Diagrama de CNN}
-	\label{fig:RNN}
+	\label{fig:CNN}
 	\cite{sowmya_practical_npl}
 \end{figure}
 
 \subsection{Tranformadores}
 
-Los trasformadores son la ultima innovación en lo que respecta a modelos basados en DL para NLP.
+Los trasformadores son la última innovación en lo que respecta a modelos basados en DL para NLP.
 Los
 modelos de transformadores obtuvieron avances en la mayoría de las tareas de NLP en los últimos
 años. \\
@@ -163,7 +161,7 @@ prefiere mirar las demás palabras vecinas en el texto y representar cada palabr
 contexto
 de las demás. Por ejemplo si el contexto habla de finanzas, entonces "banco" probablemente
 representaría una
-institución financiera. Por otro lado en el contexto de un rió, estaría relacionado con un
+institución financiera. Por otro lado en el contexto de un río, estaría relacionado con un
 montículo de tierra.
 Recientemente, los transformadores han sido utilizados para transferir aprendizaje con flujos de
 pequeñas tareas,
@@ -175,7 +173,7 @@ aplicado para resolver problemas similares.
 	\centering
 	\includegraphics[width=0.8\textwidth]{imagenes/Cap 2/tranformers.png}
 	\caption{Diagrama de un Transformador}
-	\label{fig:RNN}
+	\label{fig:Transformadores}
 	\cite{sowmya_practical_npl}
 \end{figure}
 
