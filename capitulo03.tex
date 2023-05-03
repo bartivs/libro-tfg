@@ -1,6 +1,6 @@
 \chapter[RASA]{RASA Open Source}
 Rasa es un framework que permite la construcción de forma sencilla de chatbots personalizados, está
-compuesta de dos librerias de código abierto, Rasa NLU y Rasa Core, denominadas en conjunto Rasa
+compuesta de dos librerías de código abierto, Rasa NLU y Rasa Core, denominadas en conjunto Rasa
 Stack.
 \indent
 \section{Conceptos Básicos}
@@ -68,7 +68,7 @@ conjunto de carpetas y archivos así como se muestra en la figura \ref{fig:Estru
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{imagenes/cap3/4_Estructura del Proyecto.png}
-	\caption{Estrucutra de los archivos}
+	\caption{Estructura de los archivos}
 	\label{fig:Estructura}
 	\cite{Rasa}
 \end{figure}
@@ -85,7 +85,7 @@ camino.\cite{Rules_Documentation}
 \subsection{Archivo Stories}
 Las historias son un tipo de datos de entrenamiento, se utiliza para entrenar modelos que puedan
 generalizar las rutas de conversación. Las entradas del usuario son expresadas mediante intents, y
-entitites si es necesario,  mientras que las respuestas del asistente son expresadas mediante
+entities si es necesario,  mientras que las respuestas del asistente son expresadas mediante
 actions.\\
 Los patrones que siguen las conversaciones podemos extraer de datos ya existentes o con la
 herramienta de rasa 'interactive learning'.\cite{Stories_Documentation}
@@ -229,7 +229,7 @@ características de Tokens como de oraciones. \cite{warmerdam_2022}
 		\end{tabular}%
 	}
 
-	\caption{Clasificadores de intenciones. Elaboracion propia}
+	\caption{Clasificadores de intenciones. Elaboración propia}
 	\label{IntentClassifier}
 \end{table}
 \begin{figure}[h]
@@ -322,8 +322,8 @@ reglas o en aprendizaje automático.\\
 \end{itemize}
 \textbf{Políticas basadas en Reglas:}
 \begin{itemize}
-	\item \textbf{Rule Policy:} Realiza las predicciones basandose en reglas que se tienen en los
-	      datos de entramiento.
+	\item \textbf{Rule Policy:} Realiza las predicciones basándose en reglas que se tienen en los
+	      datos de entrenamiento.
 \end{itemize}
 Con cada interacción, las políticas definidas indican con un nivel de confianza cuál será la
 siguiente acción a ser tomada, aquella que tiene obtiene el mayor resultado sera la que decida la
@@ -398,7 +398,7 @@ ejecutar Rasa Enterprise estos deben ser todos de la misma versión para asegura
 	\item \textbf{Servicio de eventos(Event Service):} Consume datos del corredor de eventos(event broker) y los archiva en la base de datos.
 	\item \textbf{Servicio de migración de la Base de datos(DB migration service):}  Asegura que
 	      los esquemas de la base de datos
-	      esten actualizados con respecto a la versión actual de Rasa Enterprise.
+	      estén actualizados con respecto a la versión actual de Rasa Enterprise.
 	\item \textbf{Rasa-X:} Ejecuta las tareas del back-end y front-end. Archiva y recupera datos de
 	      conversaciones, entrenamiento y meta-datos, como rótulos de conversaciones y banderas de
 	      mensajes en la base de datos de Rasa Enterprise. El front-end usa las entradas del back-end para brindar
