@@ -1,4 +1,4 @@
-\chapter[IMPLEMENTACION]{IMPLEMENTACIÓN}
+\chapter[IMPLEMENTACIÓN]{IMPLEMENTACIÓN}
 En los capítulos anteriores presentamos implementaciones de alto nivel de la arquitectura de
 sistemas conceptuales de chatbots, así como también arquitecturas recomendadas por la documentación
 de Rasa. En el presente capítulo presentaremos los componentes elegidos y sus funciones en el
@@ -6,7 +6,7 @@ sistema.
 
 \section{Docker}
 
-Para implemtar los servicios se usaron microcontenedores Docker, por lo que introduciremos
+Para implementar los servicios se usaron microcontenedores Docker, por lo que introduciremos
 brevemente los conceptos de esta tecnología.
 
 \subsection{Contenedor}
@@ -39,7 +39,7 @@ los contenedores para que estos puedan comunicarse mutuamente entre ellos y solo
 puertos necesarios para interactuar con el sistema en cuestión y esta es la opción utilizada en
 nuestra implementación. \cite{Docker}
 
-\subsection{Volumenes}
+\subsection{Volúmenes}
 Puesto que un contenedor no tiene un estado persistente sobre los datos que genera, se introducen
 los volúmenes, son la forma recomendada de agregar persistencia de datos a un contendedor de
 Docker.
@@ -53,8 +53,8 @@ Docker.
 	\label{fig:volume_diagram}
 \end{figure}
 
-\subsection{Construción}
-Las imágenes de Docker se construyen partir de instrucciones escritas en un archivo denominadado
+\subsection{Construcción}
+Las imágenes de Docker se construyen partir de instrucciones escritas en un archivo denominado
 Dockerfile,
 generalmente de parte de una imagen base de la cual sé la adiciona lo necesario para ejecutar la
 aplicación.
