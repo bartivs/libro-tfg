@@ -5,9 +5,12 @@ de Rasa. En el presente capítulo presentaremos los componentes elegidos y sus f
 sistema.
 
 \section{Docker}
-
-Para implementar los servicios se usaron microcontenedores Docker, por lo que introduciremos
-brevemente los conceptos de esta tecnología.
+Existen varias implementaciones de contenedores para servidores como Docker, containerd, OpenVZ y
+HyperV. La mas utilizada en la industria y con mas variedad de servicios actualmente es
+Docker por lo que decidimos elegir esta herramienta para el desarrollo y despliegue de servicios del
+proyecto. Docker puede ser ejecutado sobre sistemas basados en Windows, Linux y macOS lo que
+facilita la igualdad de condiciones entre ambientes de desarrollo y producción, ademas es de uso
+libre y gratuito. \cite{alternativas_docker}
 
 \subsection{Contenedor}
 
@@ -20,7 +23,7 @@ Ingles). \cite{Docker}
 	\centering
 	\includegraphics[width=\textwidth]{imagenes/cap4/docker-container.png}
 	\caption{Contenedores}
-  \cite{Docker}
+	\cite{Docker}
 	\label{fig:container_diagram}
 \end{figure}
 
@@ -49,7 +52,7 @@ Docker.
 	\centering
 	\includegraphics[width=\textwidth]{imagenes/cap4/docker-volume.png}
 	\caption{Volumen}
-  \cite{Docker}
+	\cite{Docker}
 	\label{fig:volume_diagram}
 \end{figure}
 
@@ -75,7 +78,7 @@ NGINX que si estaba instalado sobre el sistema operativo del servidor.
 	\centering
 	\includegraphics[width=\textwidth]{imagenes/cap4/server.png}
 	\caption{Componentes del sistema}
-  \textbf{Fuente:} Elaboración propia.
+	\textbf{Fuente:} Elaboración propia.
 	\label{fig:server_diagram}
 \end{figure}
 
@@ -95,7 +98,15 @@ estática, como por el ejemplo la acción relacionada con el cálculo de puntaje
 desacuerdo a los puntajes en los exámenes parciales.
 
 \subsection{PostgresSQL}
-
+En la documentación de Rasa, especifica que se necesita un almacenamiento para el registro de
+eventos (event broker) para su posterior análisis o también para el procesamiento de los eventos
+por otros
+servicios. Dependiendo de la demanda y el flujo de datos se pueden elegir Pika, Kafka y asi como
+el uso de Bases de datos basadas en SQL para el almacenamiento. \cite{event_broker} Como
+contábamos con experiencia previa en el uso de bases de datos utilizamos PostgresSQL que era una
+implementación ya conocida, ademas para el desarrollo las funcionalidades adicionales de  si bien
+podrían haber sido útiles agregarían complejidad innecesaria al sistema en fases iniciales y pueden
+ser adicionados posteriormente.
 PostgresSQL es un motor de base de datos del tipo relacional\cite{postgresql} el cual se configuró
 a partir de una imagen oficial de PostgresSQL disponible en los repositorios de
 DockerHub\cite{DockerHub}. Aparte de sus funciones de base de datos de sistema, también ejecutar un
@@ -104,7 +115,11 @@ Eventos a un archivo separado por comas(csv) que se utiliza para retroalimentar 
 y generar más datos para mejorar el modelo.
 
 \subsection{NGINX}
-
+Para poder servir los archivos y la redirección interna de  las peticiones al servidor de Rasa Open
+Source se necesita un servidor WEB con estas características. Existen  varias implementaciones que
+pueden ser útiles como Apache, Caddy y NGINX. El mas utilizado en la industria es NGINX por lo que
+elegimos por su facilidad para configuración, amplia disponibilidad de documentación y asi como
+también ser el mas eficiente entre las demás opciones. \cite{web_servers}
 NGINX, es un servidor web que también puede ser usado como proxy reverso, que implica redirigir el
 tráfico a puertos internos y también para servir archivos que fueron las funciones utilizadas para
 el proyecto. Así como también puede ser utilizado como balanceador de carga, mail proxy y HTTP
@@ -115,15 +130,27 @@ la copia más reciente de la tabla Eventos para agilizar las verificaciones de l
 preguntas recibidas.
 
 \section{Recursos}
+Para la puesta en producción se necesita un servidor que este disponible con acceso a internet y a
+una IP publica, dada la amplia variedad de opciones de proveedores de nubes publicas, las ventajas
+en disponibilidad, accesibilidad, facilidad cambio de prestaciones y el bajo
+coste de mantenimiento que tienen actualmente en comparación de implementar un servidor propio
+local optamos por usar un servicio en la nube. \cite{cloud_providers}
 
-Para la puesta en producción del proyecto, se utilizó una instancia de Droplet alojado en Nueva
+Se eligió el proveedor DigitalOcean, se necesito una instancia de Droplet alojado en Nueva
 York del proveedor DigitalOcean con un procesador con un 1vcpu(procesador virtualizado), 1 GB de
 RAM, 25 GB de almacenamiento y con un costo de entre 4 y 6 dólares americanos al mes dependiendo
 del tráfico presentado. Por las limitaciones de memoria del servidor se configuró también 4 GB de
 espacio de intercambio(SWAP) en el espacio de almacenamiento.
 
 \section{Telegram}
-
-Para habilitar pruebas para el público general se eligió Telegram, puesto que es bastante sencillo
-usar su servicio para conectar a implementaciones de chatbots y este no tiene costo de uso.
+Entre las opciones de interfaz existen dos opciones populares, implementar un cliente web o
+aplicación Movil, o integrarlo dentro de plataformas de mensajería existentes. Para evitar agregar
+complejidad al sistema decidimos optar por el uso de una plataforma existente. Si bien la plataforma
+de mensajería mas utilizada en nuestro medio es WhatsApp, esta presenta
+costos para el uso de su interfaz de programación por lo que fue descartada para la implementación del
+proyecto, la segunda mas utilizada es Telegram que debido a su una amplia comunidad
+para desarrollo de soluciones dentro de la plataforma puesto que es bastante sencillo
+usar su servicio para conectar a implementaciones de chatbots, ademas no requiere costos para el
+uso de su interfaz de programación por lo que consideramos que era la mejor opción para
+publicar la solución a los usuarios finales.
 \cite{botfather}
